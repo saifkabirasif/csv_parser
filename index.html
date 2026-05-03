@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSV Search</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #333; padding: 2rem; }
+  h1 { margin-bottom: 1.5rem; font-size: 1.5rem; }
+  .card { background: #fff; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+  label { font-weight: 600; display: block; margin-bottom: .5rem; }
+  input[type="file"] { margin-bottom: 1rem; }
+  .search-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .search-field input { width: 100%; padding: .5rem; border: 1px solid #ccc; border-radius: 4px; font-size: .9rem; }
+  .search-field input:focus { outline: none; border-color: #4a90d9; box-shadow: 0 0 0 2px rgba(74,144,217,.2); }
+  button { padding: .6rem 1.2rem; border: none; border-radius: 4px; cursor: pointer; font-size: .9rem; font-weight: 600; margin-top: 1rem; }
+  .btn-primary { background: #4a90d9; color: #fff; }
+  .btn-primary:hover { background: #3a7bc8; }
+  .btn-secondary { background: #e0e0e0; color: #333; margin-left: .5rem; }
+  .btn-secondary:hover { background: #d0d0d0; }
+  .error { color: #c0392b; font-weight: 600; margin-top: 1rem; }
+  .info { color: #666; font-size: .85rem; }
+  table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  th, td { border: 1px solid #ddd; padding: .5rem .75rem; text-align: left; font-size: .85rem; }
+  th { background: #4a90d9; color: #fff; }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .hidden { display: none; }
+  .row-count { font-weight: 600; margin-top: .5rem; }
+</style>
+</head>
+<body>
+
+<h1>CSV Search</h1>
+
+<div class="card" id="upload-section">
+  <label for="csv-file">Upload CSV File</label>
+  <input type="file" id="csv-file" accept=".csv">
+  <div id="upload-status" class="info"></div>
+</div>
+
+<div class="card hidden" id="search-section">
+  <label>Search (case-insensitive substring match)</label>
+  <div class="search-grid" id="search-fields"></div>
+  <button class="btn-primary" id="search-btn">Search</button>
+  <button class="btn-secondary" id="clear-btn">Clear</button>
+</div>
+
+<div class="card hidden" id="result-section">
+  <div id="result-message"></div>
+  <div id="result-count" class="row-count"></div>
+  <div id="result-table-wrap"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script>
+const csvInput = document.getElementById('csv-file');
+const uploadStatus = document.getElementById('upload-status');
+const searchSection = document.getElementById('search-section');
+const searchFields = document.getElementById('search-fields');
+const searchBtn = document.getElementById('search-btn');
+const clearBtn = document.getElementById('clear-btn');
+const resultSection = document.getElementById('result-section');
+const resultMessage = document.getElementById('result-message');
+const resultCount = document.getElementById('result-count');
+const resultTableWrap = document.getElementById('result-table-wrap');
+
+let csvData = null;
+let csvColumns = null;
+
+csvInput.addEventListener('change', () => {
+  const file = csvInput.files[0];
+  if (!file) return;
+
+  uploadStatus.textContent = 'Parsing...';
+  resultSection.classList.add('hidden');
+
+  Papa.parse(file, {
+    header: true,
+    skipEmptyLines: true,
+    complete: function(results) {
+      if (results.errors.length > 0) {
+        uploadStatus.textContent = 'Error parsing CSV: ' + results.errors[0].message;
+        return;
+      }
+      csvData = results.data;
+      csvColumns = results.meta.fields;
+      buildSearchFields(csvColumns);
+      searchSection.classList.remove('hidden');
+      uploadStatus.textContent = 'Loaded: ' + file.name + ' (' + csvColumns.length + ' columns, ' + csvData.length + ' rows)';
+    },
+    error: function(err) {
+      uploadStatus.textContent = 'Error: ' + err.message;
+    }
+  });
+});
+
+function buildSearchFields(columns) {
+  searchFields.innerHTML = '';
+  columns.forEach(col => {
+    const div = document.createElement('div');
+    div.className = 'search-field';
+    const label = document.createElement('label');
+    label.textContent = col;
+    label.setAttribute('for', 'search-' + col);
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'search-' + col;
+    input.dataset.column = col;
+    input.placeholder = 'Search ' + col;
+    div.appendChild(label);
+    div.appendChild(input);
+    searchFields.appendChild(div);
+  });
+}
+
+searchBtn.addEventListener('click', () => {
+  if (!csvData) return;
+
+  const filters = {};
+  searchFields.querySelectorAll('input').forEach(input => {
+    const val = input.value.trim();
+    if (val) filters[input.dataset.column] = val;
+  });
+
+  resultMessage.textContent = '';
+  resultMessage.className = '';
+  resultCount.textContent = '';
+  resultTableWrap.innerHTML = '';
+
+  let filtered = csvData.filter(row => {
+    for (const [col, value] of Object.entries(filters)) {
+      const cellValue = (row[col] || '').toLowerCase();
+      if (!cellValue.includes(value.toLowerCase())) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  resultSection.classList.remove('hidden');
+
+  if (filtered.length > 10) {
+    resultMessage.className = 'error';
+    resultMessage.textContent = 'Too many results (' + filtered.length + '). Please narrow your search.';
+    resultCount.textContent = '';
+    resultTableWrap.innerHTML = '';
+    return;
+  }
+
+  resultCount.textContent = filtered.length + ' result(s) found';
+  renderTable(csvColumns, filtered);
+});
+
+clearBtn.addEventListener('click', () => {
+  searchFields.querySelectorAll('input').forEach(input => input.value = '');
+  resultSection.classList.add('hidden');
+});
+
+function renderTable(columns, rows) {
+  let html = '<table><thead><tr>';
+  columns.forEach(col => html += '<th>' + escapeHtml(col) + '</th>');
+  html += '</tr></thead><tbody>';
+  rows.forEach(row => {
+    html += '<tr>';
+    columns.forEach(col => html += '<td>' + escapeHtml(row[col] || '') + '</td>');
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  resultTableWrap.innerHTML = html;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+</script>
+</body>
+</html>
