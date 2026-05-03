@@ -1,0 +1,314 @@
+/* ======================================================================
+   CSV Search — Theme Definitions (10 themes)
+   Each theme defines CSS custom properties on a body class.
+   ====================================================================== */
+
+/* 1. Ocean — Clean blue, professional */
+body.theme-ocean {
+  --color-bg: #f0f4f8;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f7f9fc;
+  --color-border: #d0d9e4;
+  --color-text: #1a2a3a;
+  --color-text-secondary: #5a6a7a;
+  --color-accent: #2e86de;
+  --color-accent-hover: #1a6fc4;
+  --color-accent-light: rgba(46, 134, 222, 0.08);
+  --color-btn-primary-bg: #2e86de;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-hover: #1a6fc4;
+  --color-btn-secondary-bg: #e4eaf0;
+  --color-btn-secondary-text: #1a2a3a;
+  --color-btn-secondary-hover: #cfd8e3;
+  --color-error: #c0392b;
+  --color-success: #27ae60;
+  --color-th-bg: #2e86de;
+  --color-th-text: #ffffff;
+  --color-row-even: #f7f9fc;
+  --color-row-hover: rgba(46, 134, 222, 0.06);
+  --color-suggestion-bg: #ffffff;
+  --color-suggestion-hover: #e8f0fe;
+  --color-suggestion-active: #d4e4fc;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.12);
+  --radius: 8px;
+}
+
+/* 2. Dark — Dark mode */
+body.theme-dark {
+  --color-bg: #121212;
+  --color-surface: #1e1e2e;
+  --color-surface-alt: #16161f;
+  --color-border: #2e2e3e;
+  --color-text: #e0e0e8;
+  --color-text-secondary: #9e9eb8;
+  --color-accent: #7c8cff;
+  --color-accent-hover: #6a7aee;
+  --color-accent-light: rgba(124, 140, 255, 0.1);
+  --color-btn-primary-bg: #7c8cff;
+  --color-btn-primary-text: #121212;
+  --color-btn-primary-hover: #6a7aee;
+  --color-btn-secondary-bg: #2e2e3e;
+  --color-btn-secondary-text: #e0e0e8;
+  --color-btn-secondary-hover: #3e3e4e;
+  --color-error: #ff6b6b;
+  --color-success: #51cf66;
+  --color-th-bg: #7c8cff;
+  --color-th-text: #121212;
+  --color-row-even: #1e1e2e;
+  --color-row-hover: rgba(124, 140, 255, 0.08);
+  --color-suggestion-bg: #1e1e2e;
+  --color-suggestion-hover: #2a2a40;
+  --color-suggestion-active: #34344e;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.5);
+  --radius: 8px;
+}
+
+/* 3. Forest — Greens and earth */
+body.theme-forest {
+  --color-bg: #f0f4ee;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f5f8f3;
+  --color-border: #c8d4be;
+  --color-text: #2d3a24;
+  --color-text-secondary: #5e6e52;
+  --color-accent: #4a8c3f;
+  --color-accent-hover: #3a7232;
+  --color-accent-light: rgba(74, 140, 63, 0.08);
+  --color-btn-primary-bg: #4a8c3f;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-hover: #3a7232;
+  --color-btn-secondary-bg: #dde6d6;
+  --color-btn-secondary-text: #2d3a24;
+  --color-btn-secondary-hover: #cdd8c4;
+  --color-error: #a83232;
+  --color-success: #4a8c3f;
+  --color-th-bg: #4a8c3f;
+  --color-th-text: #ffffff;
+  --color-row-even: #f5f8f3;
+  --color-row-hover: rgba(74, 140, 63, 0.06);
+  --color-suggestion-bg: #ffffff;
+  --color-suggestion-hover: #e8f0e4;
+  --color-suggestion-active: #d4e4cc;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.12);
+  --radius: 8px;
+}
+
+/* 4. Sunset — Warm oranges and reds */
+body.theme-sunset {
+  --color-bg: #fef5f0;
+  --color-surface: #ffffff;
+  --color-surface-alt: #fff8f4;
+  --color-border: #e8cfc2;
+  --color-text: #3d2218;
+  --color-text-secondary: #8a5a42;
+  --color-accent: #e85d26;
+  --color-accent-hover: #d04a14;
+  --color-accent-light: rgba(232, 93, 38, 0.08);
+  --color-btn-primary-bg: #e85d26;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-hover: #d04a14;
+  --color-btn-secondary-bg: #f5ddd0;
+  --color-btn-secondary-text: #3d2218;
+  --color-btn-secondary-hover: #ebccbb;
+  --color-error: #c0392b;
+  --color-success: #4a8c3f;
+  --color-th-bg: #e85d26;
+  --color-th-text: #ffffff;
+  --color-row-even: #fff8f4;
+  --color-row-hover: rgba(232, 93, 38, 0.06);
+  --color-suggestion-bg: #ffffff;
+  --color-suggestion-hover: #fce8de;
+  --color-suggestion-active: #f8d2be;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.12);
+  --radius: 8px;
+}
+
+/* 5. Lavender — Purple/violet */
+body.theme-lavender {
+  --color-bg: #f4f0fa;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f9f6fd;
+  --color-border: #d4c6e8;
+  --color-text: #2a1f3d;
+  --color-text-secondary: #7a5ea0;
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c4ee6;
+  --color-accent-light: rgba(139, 92, 246, 0.08);
+  --color-btn-primary-bg: #8b5cf6;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-hover: #7c4ee6;
+  --color-btn-secondary-bg: #e4d8f4;
+  --color-btn-secondary-text: #2a1f3d;
+  --color-btn-secondary-hover: #d4c4e8;
+  --color-error: #dc2626;
+  --color-success: #16a34a;
+  --color-th-bg: #8b5cf6;
+  --color-th-text: #ffffff;
+  --color-row-even: #f9f6fd;
+  --color-row-hover: rgba(139, 92, 246, 0.06);
+  --color-suggestion-bg: #ffffff;
+  --color-suggestion-hover: #ede5fc;
+  --color-suggestion-active: #dccffc;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.12);
+  --radius: 8px;
+}
+
+/* 6. Rose — Rose gold / pink */
+body.theme-rose {
+  --color-bg: #fdf2f4;
+  --color-surface: #ffffff;
+  --color-surface-alt: #fef5f7;
+  --color-border: #e8c8ce;
+  --color-text: #3d1a24;
+  --color-text-secondary: #a0526a;
+  --color-accent: #e4407a;
+  --color-accent-hover: #d02e68;
+  --color-accent-light: rgba(228, 64, 122, 0.08);
+  --color-btn-primary-bg: #e4407a;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-hover: #d02e68;
+  --color-btn-secondary-bg: #f5d0da;
+  --color-btn-secondary-text: #3d1a24;
+  --color-btn-secondary-hover: #ebbbc8;
+  --color-error: #dc2626;
+  --color-success: #16a34a;
+  --color-th-bg: #e4407a;
+  --color-th-text: #ffffff;
+  --color-row-even: #fef5f7;
+  --color-row-hover: rgba(228, 64, 122, 0.06);
+  --color-suggestion-bg: #ffffff;
+  --color-suggestion-hover: #fde0ea;
+  --color-suggestion-active: #f8c8d8;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.12);
+  --radius: 8px;
+}
+
+/* 7. Midnight — Deep navy with cyan accents */
+body.theme-midnight {
+  --color-bg: #0d1b2a;
+  --color-surface: #1b2d44;
+  --color-surface-alt: #152238;
+  --color-border: #2a4060;
+  --color-text: #d8e4f0;
+  --color-text-secondary: #8899aa;
+  --color-accent: #00d4ff;
+  --color-accent-hover: #00bce6;
+  --color-accent-light: rgba(0, 212, 255, 0.1);
+  --color-btn-primary-bg: #00d4ff;
+  --color-btn-primary-text: #0d1b2a;
+  --color-btn-primary-hover: #00bce6;
+  --color-btn-secondary-bg: #2a4060;
+  --color-btn-secondary-text: #d8e4f0;
+  --color-btn-secondary-hover: #3a5070;
+  --color-error: #ff6b6b;
+  --color-success: #51cf66;
+  --color-th-bg: #00d4ff;
+  --color-th-text: #0d1b2a;
+  --color-row-even: #152238;
+  --color-row-hover: rgba(0, 212, 255, 0.08);
+  --color-suggestion-bg: #1b2d44;
+  --color-suggestion-hover: #24344e;
+  --color-suggestion-active: #2e4060;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.5);
+  --radius: 8px;
+}
+
+/* 8. Arctic — Light grays, icy blues */
+body.theme-arctic {
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-text: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-accent: #0ea5e9;
+  --color-accent-hover: #0284c7;
+  --color-accent-light: rgba(14, 165, 233, 0.08);
+  --color-btn-primary-bg: #0ea5e9;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-hover: #0284c7;
+  --color-btn-secondary-bg: #e2e8f0;
+  --color-btn-secondary-text: #1e293b;
+  --color-btn-secondary-hover: #cbd5e1;
+  --color-error: #ef4444;
+  --color-success: #22c55e;
+  --color-th-bg: #e0f2fe;
+  --color-th-text: #0c4a6e;
+  --color-row-even: #f8fafc;
+  --color-row-hover: rgba(14, 165, 233, 0.06);
+  --color-suggestion-bg: #ffffff;
+  --color-suggestion-hover: #e0f2fe;
+  --color-suggestion-active: #bae6fd;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.1);
+  --radius: 10px;
+}
+
+/* 9. Espresso — Coffee browns and cream */
+body.theme-espresso {
+  --color-bg: #f5f0e8;
+  --color-surface: #fffcf5;
+  --color-surface-alt: #f8f4ea;
+  --color-border: #d4c8b0;
+  --color-text: #3d2e1a;
+  --color-text-secondary: #8a7456;
+  --color-accent: #a16207;
+  --color-accent-hover: #8a5200;
+  --color-accent-light: rgba(161, 98, 7, 0.08);
+  --color-btn-primary-bg: #a16207;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-hover: #8a5200;
+  --color-btn-secondary-bg: #e8dcc8;
+  --color-btn-secondary-text: #3d2e1a;
+  --color-btn-secondary-hover: #d8cbae;
+  --color-error: #b91c1c;
+  --color-success: #15803d;
+  --color-th-bg: #a16207;
+  --color-th-text: #ffffff;
+  --color-row-even: #f8f4ea;
+  --color-row-hover: rgba(161, 98, 7, 0.06);
+  --color-suggestion-bg: #fffcf5;
+  --color-suggestion-hover: #f5eddc;
+  --color-suggestion-active: #e8dcc4;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.12);
+  --radius: 10px;
+}
+
+/* 10. Cyber — Neon green on dark */
+body.theme-cyber {
+  --color-bg: #0a0a0a;
+  --color-surface: #141414;
+  --color-surface-alt: #1a1a1a;
+  --color-border: #2a2a2a;
+  --color-text: #d4d4d4;
+  --color-text-secondary: #808080;
+  --color-accent: #39ff14;
+  --color-accent-hover: #32e610;
+  --color-accent-light: rgba(57, 255, 20, 0.08);
+  --color-btn-primary-bg: #39ff14;
+  --color-btn-primary-text: #0a0a0a;
+  --color-btn-primary-hover: #32e610;
+  --color-btn-secondary-bg: #2a2a2a;
+  --color-btn-secondary-text: #d4d4d4;
+  --color-btn-secondary-hover: #3a3a3a;
+  --color-error: #ff4444;
+  --color-success: #39ff14;
+  --color-th-bg: #39ff14;
+  --color-th-text: #0a0a0a;
+  --color-row-even: #1a1a1a;
+  --color-row-hover: rgba(57, 255, 20, 0.06);
+  --color-suggestion-bg: #141414;
+  --color-suggestion-hover: #222222;
+  --color-suggestion-active: #2a3a2a;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-dropdown: 0 4px 12px rgba(57, 255, 20, 0.1);
+  --radius: 4px;
+}

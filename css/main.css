@@ -1,0 +1,345 @@
+/* ======================================================================
+   CSV Search — Main Styles
+   Uses CSS custom properties defined in themes.css
+   ====================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 2rem;
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+  line-height: 1.5;
+}
+
+/* ---- Header ---- */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.theme-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-picker label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.theme-picker select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.theme-picker select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+  transition: background 0.3s, border-color 0.3s;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Labels ---- */
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+/* ---- File Input ---- */
+.file-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.file-input-wrap input[type="file"] {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+/* ---- Data Source Selector ---- */
+.source-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.source-row .separator {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+/* ---- Select Dropdown ---- */
+select.csv-select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  min-width: 200px;
+  transition: border-color 0.2s;
+}
+
+select.csv-select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* ---- Search Grid ---- */
+.search-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-field {
+  position: relative;
+}
+
+.search-field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.search-field input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-field input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+.search-field input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.6;
+}
+
+/* ---- Buttons ---- */
+.btn-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+button {
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+}
+
+.btn-primary:hover {
+  background: var(--color-btn-primary-hover);
+}
+
+.btn-secondary {
+  background: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
+}
+
+.btn-secondary:hover {
+  background: var(--color-btn-secondary-hover);
+}
+
+/* ---- Info / Error ---- */
+.info {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.error {
+  color: var(--color-error);
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.row-count {
+  font-weight: 600;
+  margin-top: 0.5rem;
+  color: var(--color-success);
+}
+
+/* ---- Table ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+th, td {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+th {
+  background: var(--color-th-bg);
+  color: var(--color-th-text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+tr:nth-child(even) {
+  background: var(--color-row-even);
+}
+
+tr:hover {
+  background: var(--color-row-hover);
+}
+
+td {
+  word-break: break-word;
+}
+
+/* ---- Intellisense / Suggestions ---- */
+.suggestions {
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-suggestion-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-dropdown);
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 2px;
+  list-style: none;
+  padding: 0;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.suggestions li {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.1s;
+}
+
+.suggestions li:last-child {
+  border-bottom: none;
+}
+
+.suggestions li:hover {
+  background: var(--color-suggestion-hover);
+}
+
+.suggestions li.active {
+  background: var(--color-suggestion-active);
+  font-weight: 600;
+}
+
+.suggestions mark {
+  background: var(--color-accent-light);
+  color: var(--color-text);
+  font-weight: 600;
+  padding: 0;
+  border-radius: 2px;
+}
+
+/* ---- Hidden ---- */
+.hidden {
+  display: none !important;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .source-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  select.csv-select {
+    min-width: 100%;
+  }
+}
