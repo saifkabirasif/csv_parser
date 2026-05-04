@@ -3,36 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSV Search</title>
+  <title>CSV Search and Send</title>
   <link rel="stylesheet" href="css/themes.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="theme-ocean">
 
   <header class="app-header">
-    <h1>CSV Search</h1>
-    <div class="theme-picker">
-      <label for="theme-select">Theme</label>
-      <select id="theme-select">
-        <option value="theme-ocean">Ocean</option>
-        <option value="theme-dark">Dark</option>
-        <option value="theme-forest">Forest</option>
-        <option value="theme-sunset">Sunset</option>
-        <option value="theme-lavender">Lavender</option>
-        <option value="theme-rose">Rose</option>
-        <option value="theme-midnight">Midnight</option>
-        <option value="theme-arctic">Arctic</option>
-        <option value="theme-espresso">Espresso</option>
-        <option value="theme-cyber">Cyber</option>
-      </select>
+    <h1><svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> CSV Search and Send</h1>
+    <div class="header-actions">
+      <div class="theme-picker">
+        <label for="theme-select">Theme</label>
+        <select id="theme-select">
+          <option value="theme-ocean">Ocean</option>
+          <option value="theme-dark">Dark</option>
+          <option value="theme-forest">Forest</option>
+          <option value="theme-sunset">Sunset</option>
+          <option value="theme-lavender">Lavender</option>
+          <option value="theme-rose">Rose</option>
+          <option value="theme-midnight">Midnight</option>
+          <option value="theme-arctic">Arctic</option>
+          <option value="theme-espresso">Espresso</option>
+          <option value="theme-cyber">Cyber</option>
+        </select>
+      </div>
+      <button class="settings-btn" id="settings-btn" title="Settings">&#9881;</button>
     </div>
   </header>
 
   <div class="card" id="upload-section">
     <div class="source-row">
-      <label for="csv-select">Data file</label>
+      <label for="csv-select">Dataset</label>
       <select id="csv-select" class="csv-select" disabled>
-        <option value="">— Select a file —</option>
+        <option value="">— Load a repo first —</option>
       </select>
       <span class="separator">or</span>
       <input type="file" id="csv-file" accept=".csv">
@@ -52,8 +55,63 @@
   <div class="card hidden" id="result-section">
     <div id="result-message"></div>
     <div id="result-count" class="row-count"></div>
+    <div class="share-row hidden" id="share-row">
+      <div class="share-group">
+        <div class="format-toggle">
+          <button class="format-btn active" id="fmt-table" title="Aligned text table">Table</button>
+          <button class="format-btn" id="fmt-csv" title="Comma-separated values">CSV</button>
+        </div>
+        <button class="btn-primary btn-share" id="share-btn" title="Share results via email or messaging app">Share</button>
+      </div>
+      <span class="share-separator"></span>
+      <div class="download-group">
+        <button class="btn-download" id="btn-pdf" title="Download as PDF">PDF</button>
+        <button class="btn-download" id="btn-excel" title="Download as Excel">Excel</button>
+        <button class="btn-download" id="btn-image" title="Download as Image">Image</button>
+      </div>
+    </div>
     <div id="result-table-wrap"></div>
   </div>
+
+  <div class="modal-overlay hidden" id="settings-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Settings</h2>
+        <button class="modal-close" id="settings-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label class="section-label">GitHub Repository</label>
+        <div class="repo-fields">
+          <div class="repo-field">
+            <label for="gh-owner">Owner</label>
+            <input type="text" id="gh-owner" placeholder="e.g. saifkabirasif">
+          </div>
+          <div class="repo-field">
+            <label for="gh-repo">Repo</label>
+            <input type="text" id="gh-repo" placeholder="e.g. DataStore">
+          </div>
+          <div class="repo-field">
+            <label for="gh-path">Path</label>
+            <input type="text" id="gh-path" placeholder="e.g. data">
+          </div>
+        </div>
+        <label class="auto-load-label">
+          <input type="checkbox" id="auto-load-check" checked>
+          Auto-load on page open
+        </label>
+        <div class="modal-actions">
+          <button class="btn-primary" id="settings-save">Save &amp; Load</button>
+          <button class="btn-secondary" id="settings-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <a href="https://saifkabirasif.com" target="_blank" rel="noopener noreferrer">
+      Saif Kabir Asif &middot; <span id="footer-year"></span> &middot; saifkabirasif.com
+    </a>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script src="js/app.js"></script>
